@@ -35,20 +35,20 @@
         <p class="d-none d-lg-block col-lg-2 font-weight-bold">Date-of-Birth</p>
       </div>
       <div class="employee-list">
-        <div class="row">
+        <!-- <div class="row bg-secondary">
           <img class="col-4 col-lg-2" alt="thumbnail" src='' />
           <p class="col-8 col-lg-3 ">Richard Morgan</p>
           <p class="d-none d-lg-block col-lg-2">111-222-3333</p>
           <p class="d-none d-lg-block col-lg-3">rmorgan@yahoo.com</p>
           <p class="d-none d-lg-block col-lg-2">11-22-1970</p>
         </div>
-        <div class="row bg-secondary">
+        <div class="row">
           <img class="col-4 col-lg-2" alt="thumbnail" src='' />
           <p class="col-8 col-lg-3">Patrice Lumumba</p>
           <p class="d-none d-lg-block col-lg-2">111-222-3333</p>
           <p class="d-none d-lg-block col-lg-3">rmorgan@yahoo.com</p>
           <p class="d-none d-lg-block col-lg-2">11-22-1970</p>
-        </div>
+        </div> -->
       </div>
     </section>
   </main>
@@ -62,10 +62,32 @@
     }
 
     function loadEmployeesFromLocalStorage() {
-      employeeList = JSON.parse(localStorage.getItem('employees'));
+      employeeList = JSON.parse(localStorage.getItem('employees')).results;
       console.log('[loadEmployeesFromLocalStorage]', employeeList);
     }
+
+    function displayEmployees() {
+      let thumbnail, first, last, phone, email, date;
+      let listEl = document.querySelector('.employee-list');
+      listEl.innerHTML = '';
+      for (let idx=0; idx < employeeList.length; idx++) {
+        // extract required fields
+        ({picture:{thumbnail}, dob:{date}, email, name:{first,last}, phone} = employeeList[idx]);
+        listEl.innerHTML+= `
+          <div class="row ${idx%2==0 ? 'bg-secondary' : ''}">
+            <div class="col-4 col-lg-2">
+              <img alt="thumbnail" src="${thumbnail}" />
+            </div>
+            <p class="col-8 col-lg-3 ">${first} ${last}</p>
+            <p class="d-none d-lg-block col-lg-2">${phone}</p>
+            <p class="d-none d-lg-block col-lg-3">${email}</p>
+            <p class="d-none d-lg-block col-lg-2">${new Date(date).toLocaleDateString()}</p>
+          </div>`;
+      }
+    }
+
     loadEmployeesFromLocalStorage();
+    displayEmployees();
   </script>
 </body>
 </html>
