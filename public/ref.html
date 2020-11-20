@@ -3,9 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <title>Reference HTML</title>
+  <style>
+    .bg-secondary {
+      background-color: #e0e0d1 !important;
+    }
+  </style>
 </head>
 <body>
-  
+  <header class="container-fluid text-center bg-secondary pb-1 mb-2">
+    <h1>Employee Directory</h1>
+    <p>Click on the <code class="font-weight-bold text-body">Name</code> field title to toggle sorting.</p>
+    <p>Use the input box above the <code class="font-weight-bold text-body">Name</code> field to filter the Employees' names.</p>
+  </header>
+  <main class="container">
+    <section class="row mb-1">
+      <!-- Search Bar  -->
+      <div class="col-2"></div>
+      <div class="col-3">
+        <input placeholder="Filter Name" />
+      </div>
+      <div class="col-7"></div>
+    </section>
+    <section>
+      <div class="row employee-header">
+        <p class="col-2 font-weight-bold">Image</p>
+        <p class="col-3 font-weight-bold">Name</p>
+        <p class="col-2 font-weight-bold">Phone</p>
+        <p class="col-3 font-weight-bold">Email</p>
+        <p class="col-2 font-weight-bold">Date-of-Birth</p>
+      </div>
+      <div class="employee-list">
+        <div class="row">
+          <img class="col-2" alt="thumbnail" src='' />
+          <p class="col-3">Richard Morgan</p>
+          <p class="col-2">111-222-3333</p>
+          <p class="col-3">rmorgan@yahoo.com</p>
+          <p class="col-2">11-22-1970</p>
+        </div>
+        <div class="row bg-secondary">
+          <img class="col-2" alt="thumbnail" src='' />
+          <p class="col-3">Patrice Lumumba</p>
+          <p class="col-2">111-222-3333</p>
+          <p class="col-3">rmorgan@yahoo.com</p>
+          <p class="col-2">11-22-1970</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let employeeList = [];
+    async function loadEmployees() {
+      const url = 'https://randomuser.me/api/?nat=ca&inc=name,phone,email,dob,picture&results=50';
+      const result = await fetch(url).then(res => res.json());
+      console.log('[loadEmployees] length=', result);
+      localStorage.setItem('employees', JSON.stringify(result));
+    }
+
+    function loadEmployeesFromLocalStorage() {
+      employeeList = JSON.parse(localStorage.getItem('employees'));
+      console.log('[loadEmployeesFromLocalStorage]', employeeList);
+    }
+    loadEmployeesFromLocalStorage();
+  </script>
 </body>
 </html>
