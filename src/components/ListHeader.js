@@ -1,10 +1,11 @@
-function ListHeader() {
+function ListHeader(props) {
   return (
     <div className="row employee-header">
       <p className="col-4 col-lg-2 font-weight-bold">Image</p>
-      <p className="col-8 col-lg-3 font-weight-bold sort-field" data-sort="none">
+      <p className="col-8 col-lg-3 font-weight-bold sort-field" 
+         data-sort={props.sortOpt} onClick={props.onClick}>
         <span>Name </span>
-        <span><i className="fas fa-sort sort-none"></i></span>
+        <span><i className={`fas fa-sort sort-${props.sortOpt}`}></i></span>
       </p>
       <p className="d-none d-lg-block col-lg-2 font-weight-bold">Phone</p>
       <p className="d-none d-lg-block col-lg-3 font-weight-bold">Email</p>
