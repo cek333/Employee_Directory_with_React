@@ -3,7 +3,7 @@ import Header from './components/Header';
 import FilterBar from './components/FilterBar';
 import ListHeader from './components/ListHeader';
 import List from './components/List';
-import employeeData from './data'; // for testing
+import API from './utils/API';
 
 function App() {
   const [employeeList, setEmployeeList] = useState([]);
@@ -12,8 +12,8 @@ function App() {
   const [sortOpt, setSortOpt] = useState('none');
 
   useEffect(function() {
-    setEmployeeList(employeeData.results);
-    // setDisplayList(employeeData.results);
+    // Call getEmployees(); use setEmployeeList() as callback function
+    API.getEmployees(setEmployeeList);
   }, []);
 
   function handleInputChange(evt) {
