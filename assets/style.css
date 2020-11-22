@@ -1,0 +1,21 @@
+    .bg-secondary {
+      background-color: #e0e0d1 !important;
+    }
+    .sort-field:hover {
+      cursor: pointer;
+    }
+    .sort-none {
+      color: transparent;
+      background-clip: text;
+      background-image: url(sort_none.png);
+    }
+    .sort-asc {
+      color: transparent;
+      background-clip: text;
+      background-image: url(sort_asc.png);
+    }
+    .sort-desc {
+      color: transparent;
+      background-clip: text;
+      background-image: url(sort_desc.png);
+    }
