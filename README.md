@@ -16,4 +16,4 @@ Employee names can be filtered to match text entered into the input box above th
 The filter and sort options can be applied simultaneously.
 
 ## Try It
-You can view the deployed site [here]().
+You can view the deployed site [here](https://cek333.github.io/Employee_Directory_with_React).
