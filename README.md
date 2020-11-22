@@ -11,7 +11,7 @@ The list of employees is initially unsorted. Click on the `Name` field heading t
 * Ascending: ![Sort ascending icon](readme/sort_asc.png)
 * Descending: ![Sort descending icon](readme/sort_desc.png)
 
-Employee names can be filtered to match text entered into the input box above the name field. The filter is case-insensitive. 
+Employee names can be filtered to match text entered into the input box above the name field. The filter is case-insensitive. If the filter text appears in either the employee's first or last name, then the employee's info will be displayed. 
 
 The filter and sort options can be applied simultaneously.
 
